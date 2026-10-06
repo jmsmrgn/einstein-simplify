@@ -58,4 +58,4 @@ Each line can fail; a self-assessment of followability cannot. Fix a failure, th
 - **For a third party.** The finished text, addressed to them, ready to send or say. Operator notes (the labeled lines and analogy limits) sit outside it.
 - **Spoken.** Short sentences, no parentheses or brackets, a paragraph break for each pause, the takeaway said again at the close.
 
-`examples/` holds three worked runs: chat rework, a third-party message, a spoken segment. Match their judgment, not their phrasing.
+`examples/` holds four worked runs: chat rework, a third-party message, a spoken segment, and a dense source split into parts. Match their judgment, not their phrasing.

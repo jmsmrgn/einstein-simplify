@@ -40,11 +40,12 @@ In chat the output is the rewrite, followed by whichever of four labeled lines h
 
 ## Examples
 
-Three worked runs, each showing its inputs, takeaway, idea count, output, labeled lines, and why it looks the way it does:
+Four worked runs, each showing its inputs, takeaway, idea count, output, labeled lines, and why it looks the way it does. The first three are one per shape; the fourth is the chat shape at its hardest, where a source far above the reader's level becomes three parts rather than one:
 
 - [Chat rework](examples/chat-rework.md)
 - [A message for a non-technical third party](examples/message-for-third-party.md)
 - [A spoken script segment](examples/spoken-script.md)
+- [A dense source split into parts](examples/dense-source-into-parts.md)
 
 ## License
 

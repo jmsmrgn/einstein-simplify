@@ -35,6 +35,7 @@ In chat the output is the rewrite, followed by whichever of four labeled lines h
 - Investor and customer-facing explanations of technical products
 - Engineering RFCs read by non-engineers
 - Onboarding and training material
+- Turning a research summary into lesson material
 - Medical or legal explanations for non-specialists
 - Reworking a dense answer until the person who asked can act on it
 

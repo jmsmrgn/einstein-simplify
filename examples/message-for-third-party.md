@@ -18,10 +18,12 @@
 >
 > With the phone check on, the right password isn't enough. After typing it, the person also approves the sign-in on their phone, so a thief who has the password but not the phone is stuck. One gap: if someone approves a request they didn't start, the thief gets in, so I'll tell everyone to approve only sign-ins they just made themselves.
 >
-> Day to day, it means a tap on the phone when signing in on a new device, roughly a few times a month. Setup takes about ten minutes per person, about two hours for all twelve of us.
+> Day to day, it means a tap on the phone when signing in on a new device or after signing out, roughly a few times a month. Setup takes about ten minutes per person, about two hours for all twelve of us.
 >
 > Can I go ahead?
 
-**Operator line** (outside the message): Left out: the product names for this (two-step verification, MFA), authenticator apps versus text codes, and hardware keys.
+**Operator line** (outside the message):
+Left out: the product names, Google Workspace and two-step verification, which Dana does not need in order to decide.
+Added: the promise that everyone will be told to approve only the sign-ins they just started, which the notes do not carry.
 
-**Why it looks like this:** Dana decides, so the ask opens the message. The picture (a reused password, a fake page) comes from Dana's world rather than from an analogy. The one place the protection fails is stated because Dana's staff could act on it. Nothing is named, because Dana does not need the terms to decide. "Roughly a few times a month" stays roughly, not "at most".
+**Why it looks like this:** Dana decides, so the ask opens the message. The picture (a reused password, a fake page) comes from Dana's world rather than from an analogy. The one place the protection fails is stated because Dana's staff could act on it. Nothing is named, because Dana does not need the terms to decide. "Roughly a few times a month" stays roughly, not "at most". The promise is the one thing the notes do not carry, so it is disclosed rather than folded in silently.

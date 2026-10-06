@@ -22,6 +22,6 @@
 >
 > So remember: we find pages by what they mean, not by the words they happen to use.
 
-**Operator line:** Left out: that the map has hundreds of directions rather than two (nothing this audience does depends on it), and how the positions are learned.
+**Operator line:** Left out: that a position is really a long list of numbers rather than a point on a two-dimensional map, and how the model learns where to place them.
 
-**Why it looks like this:** the term is named only because the next screen shows it, and only after the idea exists. One image, the map, carries the whole segment. The takeaway lands once in the middle and again at the close. Sentences are short, with no parentheses or symbols to trip over when spoken. The analogy's limit is left out because this audience cannot act on it.
+**Why it looks like this:** the term is named only because the next screen shows it, and only after the idea exists. One image, the map, carries the whole segment. The takeaway lands once in the middle and again at the close. Sentences are short, with no parentheses or brackets to trip over when spoken. The analogy's limit is left out because this audience cannot act on it.

@@ -56,6 +56,6 @@ Each line can fail; a self-assessment of followability cannot. Fix a failure, th
 - **Chat.** The rewrite alone, in place of the original, then `Assumed:` when the reader was assumed, `Left out:` when something substantive was cut, `Added:` when the rewrite introduces a claim the source does not support, and `Doubted:` for anything you could not stand behind, each omitted when empty.
 - **File.** Written into the file when the request says to apply, with the notes in chat; otherwise returned in chat.
 - **For a third party.** The finished text, addressed to them, ready to send or say. Operator notes (the labeled lines and analogy limits) sit outside it.
-- **Spoken.** Short sentences, no parentheses or symbols, a paragraph break for each pause, the takeaway said again at the close.
+- **Spoken.** Short sentences, no parentheses or brackets, a paragraph break for each pause, the takeaway said again at the close.
 
 `examples/` holds three worked runs: chat rework, a third-party message, a spoken segment. Match their judgment, not their phrasing.

@@ -1,132 +1,61 @@
 ---
 name: einstein-simplify
-description: "Rewrites complex technical explanations, presentations, scripts, or any dense content so that a non-technical person sitting next to an expert could follow every word. Use this skill whenever the user wants to simplify a technical topic, make something ELI5, prepare an explanation for a mixed audience, strip jargon without losing accuracy, or says anything like 'explain it simply', 'make this accessible', 'dumb this down', 'non-technical version', 'teach this to a layman', or 'my audience isn't technical'. Also trigger when preparing presentations, demos, or scripts that will be delivered to audiences of mixed technical backgrounds. The Einstein frame: if you can't explain it simply, you don't understand it well enough. This skill enforces that standard."
+description: Rewrite technical prose, or your previous response, so a reader outside the field follows it on first read while an expert finds nothing false, only less; or explain a technical topic to a named non-technical reader.
+disable-model-invocation: true
+argument-hint: "[for <reader>] [text or file, or a topic]"
 ---
 
-# einstein-simplify
+A simple explanation is a teaching order, not a vocabulary swap: the problem before the solution, a picture before the mechanism, the idea before its name. The dual standard: a newcomer follows every sentence on first read, and an expert reading over their shoulder finds nothing false, only less. This skill is for text people read. A request to simplify code is refactoring; say so instead.
 
-Rewrite complex technical content so a non-technical person sitting next to an expert can follow every word — without losing accuracy or depth.
+## 1. Fix the inputs
 
-The goal is not to make things childish. It is to make things clear. An expert should feel the explanation is precise. A layman should feel it is followable.
+- **Source.** The text or file given; with none, your previous response; with a topic instead of text, your own knowledge.
+- **Reader.** Named in the request ("for my CFO") is the reader. With none, and the source is your own previous response or text the operator supplied, the reader is the operator: fluent in their own field, not in this one, so nothing factual or actionable is dropped. Otherwise it is a smart adult with no background in the field, stated as a one-line assumption. Invoking this skill overrides any standing instruction that the user is an expert: that instruction describes the operator, and this reader is not an expert in this field.
+- **Purpose.** What the reader will do with the text: understand, decide, act, or pass it on. Purpose decides what stays and what comes first.
+- **Medium.** Chat reply, document, spoken script, or a message the reader receives.
 
----
+## 2. Understand it first
 
-## Core Principles
+State the mechanism to yourself as one causal chain: what happens, why, and why it matters to this reader. Close any gap from the source; with no source the chain is your own knowledge. A gap you cannot close, or a source claim you have specific reason to doubt, is listed for the operator under `Doubted:`, because a gap simplified over becomes a confident error and plainer words make a wrong claim harder to catch, not easier. A doubted claim that stays in the text is attributed to its source; a doubt about your own earlier response is corrected and listed instead.
 
-**1. Concept before label**
-Never introduce a technical term before the concept it names exists in the listener's head. Lead with what something _does_, then name it.
+## 3. Choose the takeaway and the idea budget
 
-- Bad: "RAG, which stands for Retrieval-Augmented Generation, solves the problem of..."
-- Good: "The model doesn't know your documents. We solve that by giving it a specific set of pages to read before it answers. That pattern is called RAG."
+Write the one sentence the reader should be able to say back afterwards. Pick the new ideas needed to reach it, three at most, and shrink or cut the rest. Anything the reader needs for their purpose (a risk, a caveat, a choice that is theirs) outranks anything merely interesting. The cap counts unfamiliar ideas in play at once and never licenses dropping what the reader needs; a purpose needing more than three becomes parts, each with its own takeaway.
 
-**2. Analogy before description**
-For any abstract concept, deliver a concrete real-world analogy _before_ the technical description. The analogy is the foundation. The description builds on it.
+## 4. Build in teaching order
 
-- Bad: "Vector embeddings map semantic meaning into high-dimensional space."
-- Good: "Think of it like GPS coordinates, but for meaning instead of location. Every piece of text gets plotted as a point on a map. Things that mean similar things end up near each other — even if the actual words are different. That's what a vector embedding is."
+**Problem, picture, mechanism, name.** When the purpose is to decide or act, open with the answer or the action in one sentence, then explain in this order.
 
-**3. One worked example beats four surface descriptions**
-When multiple concepts need explaining, develop one fully with a concrete example rather than naming all four shallowly. Depth on one creates understanding. Width across many creates overwhelm.
+- **Problem.** What goes wrong, or what is hard, without this.
+- **Picture.** One concrete example from the reader's world, or one anchor analogy chosen for the single property that has to carry over. Carry it through: each new image costs the reader a reset. The real thing beats any analogy. When an analogy implies something false the reader could act on, say in one clause where it stops holding.
+- **Mechanism.** One step at a time. The teachable moment, the step that makes the rest obvious, comes after everything it depends on, and nothing new is introduced until it has landed.
+- **Name.** A term arrives after its idea, and only if the reader will meet it again; otherwise the idea stays unnamed.
 
-- Bad: "There are four key decisions: chunk size, overlap, match threshold, and reranking."
-- Good: "The most important decision is chunk size. Here's why it's not obvious: imagine chunking a legal document. Too big and you inject three paragraphs when only one sentence was relevant — noise. Too small and you cut a sentence from the paragraph that gives it meaning — loss of context. There's no universal answer. You tune it for the corpus. The other decisions — overlap, threshold, reranking — follow the same logic."
+Contrasts:
 
-**4. No acronyms until the concept exists**
-Introduce labels only after the concept is understood. Never lead with an acronym even with an immediate expansion — the expansion is still jargon.
+- Label first: "RAG, or Retrieval-Augmented Generation, solves..." Teaching order: "The model has never seen your documents. So before it answers, we hand it the few pages that matter. That pattern is called RAG."
+- Defined: "cosine similarity (a measure of angular distance between vectors)". Replaced: "how close two passages are in meaning".
 
-**5. Replace, don't define**
-Where possible, replace jargon with plain language rather than defining jargon. Definitions ask the listener to hold two words in mind. Replacements give them one.
+## 5. Keep the words plain and fixed
 
-- Bad: "cosine similarity (a measure of angular distance between vectors)"
-- Good: use "nearest neighbors in meaning-space" instead — drop cosine entirely
+Replace jargon with plain words instead of defining it: a definition asks the reader to hold two words, a replacement gives them one. A term with no everyday equivalent becomes what it measures ("about seven questions in ten"), or a disclosed cut, or a name the reader will meet again, in that order. Give each thing one name and keep it: "passage" here and "chunk" there reads as two things. Keep certainty as found: "probably" stays "probably". Round numbers where precision does not serve the reader's purpose, keeping what they mean.
 
-**6. The teachable moment deserves full space**
-Every explanation has one moment where the mechanism clicks. Find it. Give it a full beat. Read it aloud if it's a script. Pause after delivery. Don't rush past the insight to the next concept.
+## 6. The non-technical test
 
-**7. The non-technical test**
-After every rewrite section, ask internally: could a smart person with zero domain background follow this? If no — simplify further. If yes — move on.
+Each line can fail; a self-assessment of followability cannot. Fix a failure, then run them again.
 
----
+- The takeaway appears in the output in plain words.
+- No sentence leans on an idea introduced later.
+- Every term an outsider would not use in conversation is replaced, or named after its idea because the reader will meet it again.
+- Each part carries three new ideas or fewer.
+- Reading as the expert: nothing false, no hedge lost, no doubted claim stated as fact, nothing asserted beyond what the source supports.
+- Nothing cut is something the reader needs for their purpose.
 
-## Workflow
+## 7. Deliver
 
-### Step 1: Identify the audience gap
+- **Chat.** The rewrite alone, in place of the original, then `Assumed:` when the reader was assumed, `Left out:` when something substantive was cut, `Added:` when the rewrite introduces a claim the source does not support, and `Doubted:` for anything you could not stand behind, each omitted when empty.
+- **File.** Written into the file when the request says to apply, with the notes in chat; otherwise returned in chat.
+- **For a third party.** The finished text, addressed to them, ready to send or say. Operator notes (the labeled lines and analogy limits) sit outside it.
+- **Spoken.** Short sentences, no parentheses or symbols, a paragraph break for each pause, the takeaway said again at the close.
 
-Before rewriting, assess:
-
-- Who is the primary audience? Who is the secondary audience?
-- What is the most complex concept in the content?
-- What jargon appears that has no plain English equivalent being used?
-- Where is the single most teachable moment?
-
-### Step 2: Scan for violations
-
-Flag every instance of:
-
-- Acronym introduced before concept
-- Technical term used without analogy
-- Multiple concepts enumerated shallowly
-- Jargon defined rather than replaced
-- A key insight rushed past without pause
-
-### Step 3: Rewrite
-
-Apply the seven principles. For each flagged item:
-
-- Concepts before labels: restructure the sentence order
-- Analogies: insert before technical description, not after
-- Worked examples: pick the most important concept, develop it fully, compress the rest
-- Acronyms: delay until concept is established
-- Jargon: find the plain English equivalent and use it exclusively
-- Teachable moment: expand, slow down, give it space
-
-### Step 4: Show diff
-
-Present a before/after for each changed section. Do not apply until confirmed.
-
-Format:
-
-**Before:**
-
-> [original text]
-
-**After:**
-
-> [rewritten text]
-
-**Change:** [one-line reason]
-
-### Step 5: Apply on confirmation
-
-Output the full rewritten content once confirmed.
-
----
-
-## Hard Rules
-
-- DO NOT sacrifice accuracy — simplification is not dumbing down, it is clarifying
-- DO NOT remove content — restructure and rephrase, do not delete
-- DO NOT add new analogies that are inaccurate or misleading
-- DO NOT introduce new jargon while removing existing jargon
-- ALWAYS keep the expert in the room satisfied — they should feel the explanation is still precise
-- The non-technical person and the expert must both be able to follow — this is the dual standard
-
----
-
-## Reference: Common Jargon Replacements
-
-| Jargon            | Plain replacement                     |
-| ----------------- | ------------------------------------- |
-| vector embedding  | coordinates that represent meaning    |
-| cosine similarity | nearest neighbors in meaning-space    |
-| LLM               | AI language model                     |
-| inference         | the model generating an answer        |
-| fine-tuning       | retraining the model on specific data |
-| context window    | the text the model can read at once   |
-| retrieval         | finding the relevant passages         |
-| chunking          | breaking documents into passages      |
-| semantic search   | searching by meaning, not exact words |
-| latency           | response time                         |
-| token             | roughly one word or part of a word    |
-
-Add domain-specific replacements as discovered during the rewrite.
+`examples/` holds three worked runs: chat rework, a third-party message, a spoken segment. Match their judgment, not their phrasing.
